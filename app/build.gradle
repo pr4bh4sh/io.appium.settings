@@ -23,6 +23,7 @@ android {
         versionCode 16
         versionName "2.13.0"
         applicationId "io.appium.settings"
+        archivesBaseName = 'settings'
     }
 
     buildTypes {
