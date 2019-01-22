@@ -6,9 +6,9 @@
   "scripts": {
     "bump-gradle-version": "gulp gradle-version-update --package-version=${npm_package_version} && git add app/build.gradle",
     "lint": "./gradlew lint",
-    "move-apks": "rm -rf apks && mkdir -p apks && cp app/build/outputs/apk/debug/settings_apk-debug.apk apks",
-    "build": "./gradlew clean assembleDebug && npm run move-apks",
-    "prepare": "npm run build",
+    "move-apk": "cp app/build/outputs/apk/debug/settings_apk-debug.apk ./apks",
+    "move-apks": "rm -rf apks && mkdir -p apks && npm run move-apk",
+    "build": "./gradlew clean assembleDebug && npm run move-apks && gulp transpile",
     "version": "npm run bump-gradle-version && npm run build && git add apks",
     "clean": "rm -rf node_modules && rm -f package-lock.json && npm install"
   },
